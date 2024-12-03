@@ -1,5 +1,10 @@
+// Objeto global para almacenar datos del usuario
 let usuario = {};
-let vistaStack = []; // Pila para rastrear la navegación entre vistas
+
+// Pila para rastrear la navegación entre vistas
+let vistaStack = [];
+
+// Objeto con las categorías de videos y su progreso
 const categorias = {
     "Programación": [
         { titulo: "Curso de HTML Básico", videoId: "MJkdaVFHrto", porcentaje: 0 },
@@ -18,23 +23,26 @@ const categorias = {
     ]
 };
 
+// Array para almacenar reproductores de YouTube
 let players = [];
+
+// Referencias a los gráficos creados con Chart.js
 let graficoBarra = null;
 let graficoPastel = null;
 
-// Cambiar de vista
+// Función para cambiar la vista activa
 function mostrarVista(vistaId) {
     const vistaActual = document.querySelector(".view:not(.hidden)")?.id;
     if (vistaActual && vistaActual !== vistaId) {
-        vistaStack.push(vistaActual); // Guardar la vista actual en la pila
+        vistaStack.push(vistaActual); // Guarda la vista actual en la pila
     }
 
-    // Ocultar todas las vistas
+    // Oculta todas las vistas
     document.querySelectorAll(".view").forEach((view) => {
         view.classList.add("hidden");
     });
 
-    // Mostrar la vista seleccionada
+    // Muestra la vista seleccionada
     const vista = document.getElementById(vistaId);
     if (vista) {
         vista.classList.remove("hidden");
@@ -46,16 +54,16 @@ function mostrarVista(vistaId) {
 // Función para volver a la vista anterior
 function volver() {
     if (vistaStack.length > 0) {
-        const vistaAnterior = vistaStack.pop(); // Recuperar la última vista de la pila
+        const vistaAnterior = vistaStack.pop(); // Recupera la última vista guardada
         mostrarVista(vistaAnterior);
     } else {
         console.error("No hay una vista anterior registrada.");
     }
 }
 
-// Manejar el registro del usuario
+// Procesa los datos del formulario de registro
 function procesarRegistro(event) {
-    event.preventDefault();
+    event.preventDefault(); // Previene el comportamiento por defecto del formulario
 
     const nombre = document.getElementById("nombre").value.trim();
     const correo = document.getElementById("correo").value.trim();
@@ -66,63 +74,70 @@ function procesarRegistro(event) {
         return;
     }
 
+    // Almacena los datos del usuario
     usuario = { nombre, correo, edad };
 
+    // Actualiza los datos en la vista de usuario registrado
     document.getElementById("userName").innerText = usuario.nombre;
     document.getElementById("userEmail").innerText = usuario.correo;
     document.getElementById("userAge").innerText = usuario.edad;
 
+    // Cambia a la vista de usuario registrado
     mostrarVista("userView");
 }
 
-// Mostrar categorías y videos
+// Muestra las categorías disponibles
 function mostrarCategorias() {
     const categoriasDiv = document.getElementById("categorias");
-    categoriasDiv.innerHTML = "";
+    categoriasDiv.innerHTML = ""; // Limpia el contenido anterior
 
     for (const categoria in categorias) {
-        const boton = document.createElement("button");
+        const boton = document.createElement("button"); // Crea un botón para cada categoría
         boton.innerText = categoria;
-        boton.onclick = () => mostrarVideos(categoria);
+        boton.onclick = () => mostrarVideos(categoria); // Asocia la función de mostrar videos
         categoriasDiv.appendChild(boton);
     }
 
+    // Cambia a la vista de categorías
     mostrarVista("categoriesView");
 }
 
-// Mostrar videos de una categoría
+// Muestra los videos de una categoría seleccionada
 function mostrarVideos(categoria) {
     const videosDiv = document.getElementById("videos");
-    videosDiv.innerHTML = `<h3>Videos de ${categoria}:</h3>`;
+    videosDiv.innerHTML = `<h3>Videos de ${categoria}:</h3>`; // Título de la categoría
 
-    players = [];
+    players = []; // Reinicia la lista de reproductores
 
     categorias[categoria].forEach((video, index) => {
         const videoContainer = document.createElement("div");
         videoContainer.className = "video-container";
 
+        // Contenedor para el reproductor de YouTube
         const playerDiv = document.createElement("div");
         playerDiv.id = `player-${index}`;
         videoContainer.appendChild(playerDiv);
 
+        // Contenedor para la barra de progreso
         const progressBarContainer = document.createElement("div");
         progressBarContainer.className = "progress-bar-container";
 
         const progressBar = document.createElement("div");
         progressBar.className = "progress-bar";
-        progressBar.style.width = `${video.porcentaje}%`;
+        progressBar.style.width = `${video.porcentaje}%`; // Configura el progreso inicial
         progressBar.innerText = `${video.porcentaje}%`;
         progressBarContainer.appendChild(progressBar);
 
         videoContainer.appendChild(progressBarContainer);
         videosDiv.appendChild(videoContainer);
 
+        // Inicializa el reproductor de YouTube
         const player = new YT.Player(`player-${index}`, {
             videoId: video.videoId,
             events: {
                 onStateChange: (event) => {
                     if (event.data === YT.PlayerState.PLAYING) {
-                        actualizarProgreso(event.target, video, progressBar);
+                        actualizarProgreso(event.target, video, progressBar); // Actualiza el progreso
                     }
                 }
             }
@@ -131,31 +146,37 @@ function mostrarVideos(categoria) {
         players.push(player);
     });
 
+    // Cambia a la vista de videos
     mostrarVista("categoriesView");
 }
 
-// Actualizar progreso del video
+// Actualiza el progreso de un video mientras se reproduce
 function actualizarProgreso(player, video, progressBar) {
     const interval = setInterval(() => {
         if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
-            clearInterval(interval);
+            clearInterval(interval); // Detiene la actualización si el video no se está reproduciendo
             return;
         }
 
+        // Calcula el porcentaje de progreso
         const currentTime = player.getCurrentTime();
         const duration = player.getDuration();
         const progreso = ((currentTime / duration) * 100).toFixed(2);
         video.porcentaje = parseFloat(progreso);
+
+        // Actualiza la barra de progreso visualmente
         progressBar.style.width = `${progreso}%`;
         progressBar.innerText = `${progreso}%`;
+
+        // Actualiza los gráficos dinámicos
         actualizarGraficos();
-    }, 1000);
+    }, 1000); // Actualización cada segundo
 }
 
-// Mostrar gráficos dinámicos
+// Muestra los gráficos dinámicos de progreso
 function mostrarGraficos() {
-    if (graficoBarra) graficoBarra.destroy();
-    if (graficoPastel) graficoPastel.destroy();
+    if (graficoBarra) graficoBarra.destroy(); // Elimina el gráfico anterior si existe
+    if (graficoPastel) graficoPastel.destroy(); // Elimina el gráfico anterior si existe
 
     const barraContext = document.getElementById("graficoBarra").getContext("2d");
     const pastelContext = document.getElementById("graficoPastel").getContext("2d");
@@ -165,13 +186,14 @@ function mostrarGraficos() {
     const videosProgreso = [];
     const categoriasColores = [];
 
+    // Itera sobre las categorías para obtener datos de los gráficos
     Object.keys(categorias).forEach((categoria, categoriaIndex) => {
         const videos = categorias[categoria];
         videos.forEach((video) => {
             videosNombres.push(`${categoria}: ${video.titulo}`);
             videosProgreso.push(video.porcentaje);
 
-            // Generar colores para cada categoría
+            // Genera colores para cada categoría
             const colores = [
                 "rgba(255, 99, 132, 0.5)",
                 "rgba(54, 162, 235, 0.5)",
@@ -189,7 +211,7 @@ function mostrarGraficos() {
         return (totalProgreso / videos.length) || 0;
     });
 
-    // Crear gráfico de barras
+    // Crea el gráfico de barras
     graficoBarra = new Chart(barraContext, {
         type: "bar",
         data: {
@@ -205,9 +227,7 @@ function mostrarGraficos() {
         options: {
             responsive: true,
             plugins: {
-                legend: {
-                    display: false
-                },
+                legend: { display: false },
                 tooltip: {
                     callbacks: {
                         label: function (context) {
@@ -223,7 +243,7 @@ function mostrarGraficos() {
         }
     });
 
-    // Crear gráfico de pastel
+    // Crea el gráfico de pastel
     graficoPastel = new Chart(pastelContext, {
         type: "pie",
         data: {
@@ -243,9 +263,7 @@ function mostrarGraficos() {
         options: {
             responsive: true,
             plugins: {
-                legend: {
-                    position: "top"
-                },
+                legend: { position: "top" },
                 tooltip: {
                     callbacks: {
                         label: function (context) {
@@ -257,28 +275,27 @@ function mostrarGraficos() {
         }
     });
 
+    // Cambia a la vista de gráficos
     mostrarVista("chartsView");
 }
 
-// Función para salir del sistema y volver a la vista de registro
+// Función para cerrar sesión
 function salir() {
-    // Restablecer los datos del usuario
-    usuario = {};
+    usuario = {}; // Restablece los datos del usuario
 
-    // Limpiar los datos mostrados en la vista de usuario registrado
+    // Limpia los datos de la vista de usuario registrado
     document.getElementById("userName").innerText = "";
     document.getElementById("userEmail").innerText = "";
     document.getElementById("userAge").innerText = "";
 
-    // Cambiar a la vista de registro
+    // Cambia a la vista de registro
     mostrarVista("registroView");
 }
 
-
-// Inicializar eventos
+// Inicializa eventos cuando se carga el DOM
 document.addEventListener("DOMContentLoaded", () => {
     const formRegistro = document.getElementById("formRegistro");
-    formRegistro.addEventListener("submit", procesarRegistro);
+    formRegistro.addEventListener("submit", procesarRegistro); // Asocia el evento al formulario
 
-    mostrarVista("registroView");
+    mostrarVista("registroView"); // Muestra la vista inicial de registro
 });

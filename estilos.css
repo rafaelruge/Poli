@@ -1,259 +1,174 @@
 /* General */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* Elimina el margen predeterminado de todos los elementos */
+    padding: 0; /* Elimina el relleno predeterminado de todos los elementos */
+    box-sizing: border-box; /* Incluye el borde y el relleno dentro del ancho/alto total del elemento */
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Arial', sans-serif; /* Fuente principal de la página */
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Asegura que el contenido ocupe toda la altura de la ventana */
-    background-color: #f4f5f7;
-    color: #333;
-    line-height: 1.6;
+    flex-direction: column; /* Organiza los elementos del body en una columna */
+    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
+    background-color: #f4f5f7; /* Color de fondo claro */
+    color: #333; /* Color del texto principal */
+    line-height: 1.6; /* Espaciado entre líneas */
 }
 
 .hidden {
-    display: none;
+    display: none; /* Oculta elementos cuando se aplica esta clase */
 }
 
 main {
-    flex: 1; /* Permite que el contenido principal ocupe el espacio disponible */
+    flex: 1; /* Permite que el contenido principal se expanda para ocupar el espacio disponible */
 }
 
 /* Header */
 .main-header {
-    background: linear-gradient(45deg, #6c63ff, #5a56e0);
-    color: white;
-    padding: 20px 0;
-    text-align: center;
+    background: linear-gradient(45deg, #6c63ff, #5a56e0); /* Fondo con degradado */
+    color: white; /* Texto en blanco */
+    padding: 20px 0; /* Espaciado vertical */
+    text-align: center; /* Centra el texto */
 }
 
 .main-header .logo {
-    font-size: 2.5rem;
-    font-weight: bold;
+    font-size: 2.5rem; /* Tamaño del texto grande */
+    font-weight: bold; /* Texto en negrita */
     margin: 0;
 }
 
 .main-header .logo span {
-    color: #ff7979;
+    color: #ff7979; /* Color específico para el texto destacado */
 }
 
 /* Footer */
 .main-footer {
-    background-color: #2c3e50;
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-    font-size: 0.9rem;
-    position: sticky; /* Mantiene el footer visible en la parte inferior */
+    background-color: #2c3e50; /* Fondo oscuro */
+    color: white; /* Texto en blanco */
+    text-align: center; /* Centra el texto */
+    padding: 15px 0; /* Espaciado vertical */
+    font-size: 0.9rem; /* Tamaño del texto */
+    position: sticky; /* Fija el pie de página en la parte inferior de la pantalla */
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: 100%; /* Ocupa todo el ancho */
 }
 
 /* Views */
 .view {
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 1200px;
-    background: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
+    padding: 20px; /* Espaciado interno */
+    margin: 20px auto; /* Centra la vista horizontalmente */
+    max-width: 1200px; /* Ancho máximo */
+    background: white; /* Fondo blanco */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera para destacar el contenedor */
+    border-radius: 8px; /* Bordes redondeados */
+    overflow: hidden; /* Oculta contenido que sobresalga del contenedor */
 }
 
 .view h2 {
-    margin-bottom: 20px;
-    color: #2c3e50;
-    font-size: 2rem;
+    margin-bottom: 20px; /* Espaciado inferior */
+    color: #2c3e50; /* Color del título */
+    font-size: 2rem; /* Tamaño del texto */
 }
 
 /* Formulario */
 .form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    display: flex; /* Usa diseño flexbox */
+    flex-direction: column; /* Alinea los elementos en una columna */
+    gap: 15px; /* Espaciado entre elementos */
 }
 
 .form label {
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #2c3e50;
+    font-weight: bold; /* Etiquetas en negrita */
+    font-size: 1.1rem; /* Tamaño del texto */
+    color: #2c3e50; /* Color del texto */
 }
 
 .form input {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 1rem; /* Tamaño del texto */
 }
 
 .form button {
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(45deg, #5a56e0, #6c63ff);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    padding: 12px; /* Espaciado interno */
+    font-size: 1rem; /* Tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+    color: white; /* Texto en blanco */
+    background: linear-gradient(45deg, #5a56e0, #6c63ff); /* Fondo con degradado */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de mano */
+    transition: all 0.3s ease; /* Transición suave al pasar el mouse */
 }
 
 .form button:hover {
-    background: linear-gradient(45deg, #6c63ff, #5a56e0);
+    background: linear-gradient(45deg, #6c63ff, #5a56e0); /* Cambia el degradado al pasar el mouse */
 }
 
 /* Categorías */
 .categories {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 20px;
+    display: flex; /* Usa diseño flexbox */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten a una nueva línea */
+    gap: 15px; /* Espaciado entre elementos */
+    justify-content: center; /* Centra los elementos */
+    margin-top: 20px; /* Espaciado superior */
 }
 
 .categories button {
-    background: linear-gradient(45deg, #6c63ff, #ff7979);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+    background: linear-gradient(45deg, #6c63ff, #ff7979); /* Fondo con degradado */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de mano */
+    font-size: 1rem; /* Tamaño del texto */
+    transition: all 0.3s ease; /* Transición suave al pasar el mouse */
 }
 
 .categories button:hover {
-    background: linear-gradient(45deg, #ff7979, #6c63ff);
+    background: linear-gradient(45deg, #ff7979, #6c63ff); /* Cambia el degradado al pasar el mouse */
 }
-
-/* Videos */
-.videos {
-    margin-top: 20px;
-}
-
-.video-container {
-    margin-bottom: 20px;
-    background: #ecf0f1;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.videos iframe {
-    width: 100%;
-    height: 315px;
-    border-radius: 5px;
-    border: none;
-}
-
-/* Botones agrupados */
-.button-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(45deg, #5a56e0, #6c63ff);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-button:hover {
-    background: linear-gradient(45deg, #6c63ff, #5a56e0);
-}
-
-/* Gráficos */
-canvas {
-    margin: 20px 0;
-    max-width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background: #f9f9f9;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Listas */
-.info-list {
-    list-style: none;
-    padding: 0;
-}
-
-.info-list li {
-    font-size: 1rem;
-    margin-bottom: 10px;
-}
-
-.progress-bar-container {
-    background-color: #e0e0e0;
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 10px 0;
-    width: 100%;
-    height: 25px;
-}
-
-.progress-bar {
-    background-color: #4caf50;
-    color: white;
-    text-align: center;
-    line-height: 25px;
-    height: 100%;
-    border-radius: 5px;
-    transition: width 0.5s ease;
-}
-
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .view {
-        padding: 15px;
+        padding: 15px; /* Reduce el espaciado interno */
     }
 
     h2 {
-        font-size: 1.5rem;
+        font-size: 1.5rem; /* Reduce el tamaño del texto */
     }
 
     button {
-        padding: 10px 15px;
-        font-size: 0.9rem;
+        padding: 10px 15px; /* Ajusta el tamaño del botón */
+        font-size: 0.9rem; /* Reduce el tamaño del texto */
     }
 
     .form input {
-        font-size: 0.9rem;
+        font-size: 0.9rem; /* Reduce el tamaño del texto en los campos */
     }
 }
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.8rem;
+        font-size: 1.8rem; /* Reduce el tamaño del título principal */
     }
 
     h2 {
-        font-size: 1.2rem;
+        font-size: 1.2rem; /* Reduce el tamaño de los subtítulos */
     }
 
     .form input {
-        font-size: 0.8rem;
-        padding: 8px;
+        font-size: 0.8rem; /* Ajusta el tamaño del texto */
+        padding: 8px; /* Ajusta el relleno */
     }
 
     button {
-        font-size: 0.8rem;
-        padding: 8px 10px;
+        font-size: 0.8rem; /* Ajusta el tamaño del texto en los botones */
+        padding: 8px 10px; /* Ajusta el relleno de los botones */
     }
 }

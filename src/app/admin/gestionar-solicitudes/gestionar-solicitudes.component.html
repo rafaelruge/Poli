@@ -1,0 +1,48 @@
+<h2>Gestión de Solicitudes</h2>
+
+<div class="filtro">
+    <label for="filtroEstado">Filtrar por estado:</label>
+    <select id="filtroEstado" [(ngModel)]="estadoSeleccionado" (change)="filtrarSolicitudes()">
+    <option value="todos">Todos</option>
+    <option value="pendiente">Pendiente</option>
+    <option value="aprobada">Aprobada</option>
+    <option value="rechazada">Rechazada</option>
+    <option value="cancelada">Cancelada</option>
+  </select>
+</div>
+
+<table *ngIf="solicitudesFiltradas.length > 0; else sinSolicitudes">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Fecha</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let solicitud of solicitudesFiltradas; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ solicitud.nombre }}</td>
+            <td>{{ solicitud.email }}</td>
+            <td>{{ solicitud.fecha }}</td>
+            <td>{{ solicitud.tipo }}</td>
+            <td>{{ solicitud.estado }}</td>
+            <td>
+                <button (click)="actualizarEstado(solicitud.id, 'aprobada')" [disabled]="solicitud.estado !== 'pendiente'">
+          Aprobar
+        </button>
+                <button (click)="actualizarEstado(solicitud.id, 'rechazada')" [disabled]="solicitud.estado !== 'pendiente'">
+          Rechazar
+        </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #sinSolicitudes>
+    <p>No hay solicitudes registradas en este estado.</p>
+</ng-template>

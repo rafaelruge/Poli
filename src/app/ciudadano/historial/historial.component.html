@@ -1,0 +1,43 @@
+<h2>Historial de Solicitudes</h2>
+<p><strong>Usuario:</strong> {{ userNombre }}</p>
+<p><strong>Correo:</strong> {{ userEmail }}</p>
+
+<table *ngIf="solicitudes.length > 0; else sinSolicitudes">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Fecha</th>
+            <th>Tipo</th>
+            <th>Dirección</th>
+            <th>Estado</th>
+            <th>Acción</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let s of solicitudes; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ s.fecha }}</td>
+            <td>{{ s.tipo }}</td>
+            <td>{{ s.direccion }}</td>
+            <td>{{ s.estado }}</td>
+
+
+            <td>
+                <button *ngIf="s.estado === 'pendiente'" (click)="cancelarSolicitud(s.id)">
+          Cancelar
+        </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #sinSolicitudes>
+    <p>No has registrado solicitudes aún.</p>
+</ng-template>
+
+<div class="export-buttons">
+    <button (click)="exportarExcel()">Exportar a Excel</button>
+    <button (click)="exportarPDF()">Exportar a PDF</button>
+</div>

@@ -1,0 +1,22 @@
+<div class="solicitud-container">
+    <h2>Solicitar Recolección de Residuos</h2>
+
+    <p><strong>Usuario:</strong> {{ userNombre }}</p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-field">
+            <label for="tipo">Tipo de residuo:</label>
+            <select id="tipo" formControlName="tipo">
+          <option value="">-- Selecciona una opción --</option>
+          <option value="Residuos orgánicos">Residuos orgánicos</option>
+          <option value="Comida vencida">Comida vencida</option>
+          <option value="Restos de jardinería">Restos de jardinería</option>
+        </select>
+            <div *ngIf="form.get('tipo')?.invalid && form.get('tipo')?.touched" class="error">
+                Debes seleccionar un tipo de residuo.
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="form.invalid">Enviar Solicitud</button>
+    </form>
+</div>

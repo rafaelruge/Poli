@@ -1,0 +1,42 @@
+.register-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+    h2 {
+        text-align: center;
+        color: #275d2b;
+        margin-bottom: 1rem;
+    }
+    label {
+        display: block;
+        margin-top: 1rem;
+        font-weight: bold;
+    }
+    input,
+    select {
+        width: 100%;
+        padding: 0.5rem;
+        margin-top: 0.25rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+    button {
+        margin-top: 1.5rem;
+        width: 100%;
+        padding: 0.75rem;
+        background-color: #3ba935;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        &:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    }
+}

@@ -6,6 +6,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GestionarSolicitudesComponent } from './gestionar-solicitudes/gestionar-solicitudes.component';
 import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 import { RutasRecoleccionComponent } from './rutas-recoleccion/rutas-recoleccion.component';
+import { NgChartsModule } from 'ng2-charts';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+
 
 
 @NgModule({
@@ -18,7 +21,9 @@ import { RutasRecoleccionComponent } from './rutas-recoleccion/rutas-recoleccion
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormsModule
+    FormsModule,
+    NgChartsModule,
+    LeafletModule
   ]
 })
 export class AdminModule { }

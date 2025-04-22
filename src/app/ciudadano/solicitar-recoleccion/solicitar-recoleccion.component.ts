@@ -14,7 +14,8 @@ export class SolicitarRecoleccionComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.form = this.fb.group({
-      tipo: ['', Validators.required]
+      tipo: ['', Validators.required],
+      direccion: ['', Validators.required]
     });
   }
 
@@ -25,18 +26,22 @@ export class SolicitarRecoleccionComponent implements OnInit {
 
   onSubmit(): void {
     const user = this.authService.getUser();
-    if (this.form.valid && user) {
+    if (this.form.valid && user) {  
+      const solicitudes = JSON.parse(localStorage.getItem('solicitudes') || '[]');    
       const nuevaSolicitud = {
         id: Date.now(),
-        nombre: user.nombre, // ✅ Se toma del usuario autenticado
+        nombre: user.nombre,
         email: user.email,
         fecha: new Date().toISOString().split('T')[0],
         tipo: this.form.value.tipo,
+        direccion: this.form.value.direccion, 
         estado: 'pendiente'
       };
-
+     
+      
       const existentes = JSON.parse(localStorage.getItem('solicitudes') || '[]');
       existentes.push(nuevaSolicitud);
+      solicitudes.push(nuevaSolicitud);
       localStorage.setItem('solicitudes', JSON.stringify(existentes));
 
       alert('Solicitud enviada con éxito');

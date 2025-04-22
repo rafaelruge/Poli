@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SolicitarRecoleccionComponent } from './solicitar-recoleccion/solicitar-recoleccion.component';
+import { PuntosEcologicosComponent } from './puntos-ecologicos/puntos-ecologicos.component';
 import { HistorialComponent } from './historial/historial.component';
 import { AuthGuard } from '../core/auth.guard';
+
 
 
 const routes: Routes = [
@@ -15,7 +17,8 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'solicitar', pathMatch: 'full' },
       { path: 'solicitar', component: SolicitarRecoleccionComponent },
-      { path: 'historial', component: HistorialComponent }
+      { path: 'historial', component: HistorialComponent },
+      { path: 'puntos', component: PuntosEcologicosComponent }
     ]
   }
 ];

@@ -1,0 +1,472 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f9fff9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4 {
+    color: #222;
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background-color: #2d9d5c;
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #248a4d;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: #2d9d5c;
+    border: 1px solid #2d9d5c;
+}
+
+.btn-outline:hover {
+    background-color: #f0f9f4;
+}
+
+.btn-blue {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+}
+
+.btn-blue:hover {
+    background-color: #1657b3;
+}
+
+/* Navigation */
+.navbar {
+    background-color: #61c43f;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil en la parte inferior */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    color: rgb(0, 0, 0);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo img {
+    height: 60px;
+    vertical-align: middle;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 20px;
+    position: relative; /* Para posicionar la línea del hover */
+}
+
+/* Efecto hover para los enlaces de navegación */
+.nav-links a {
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #000;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease, transform 0.3s ease;
+    transform-origin: left;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+    animation: slideRight 0.5s ease forwards;
+}
+
+@keyframes slideRight {
+    0% {
+        width: 0;
+        left: 0;
+    }
+    100% {
+        width: 100%;
+        left: 0;
+    }
+}
+
+.btn-contact {
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover para el botón de contacto */
+.btn-contact:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.btn-contact svg {
+    margin-left: 5px;
+}
+
+/* Footer */
+.footer {
+    background-color: #f5f5f5;
+    padding: 30px 0 20px;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    margin-right: 20px;
+    color: #555;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:last-child {
+    margin-right: 0;
+}
+
+.footer-links a:hover {
+    color: #4CAF50; /* Verde al hacer hover */
+}
+
+.social-icons a {
+    margin-left: 15px;
+    color: #555;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #4CAF50; /* Verde al hacer hover */
+}
+
+.copyright {
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+    margin: 0;
+    padding-top: 20px;
+    border-top: 1px solid #e1e1e1;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .community, .newsletter-container {
+        flex-direction: column;
+    }
+    
+    .cta {
+        flex-direction: column-reverse;
+    }
+    
+    .cta-content, .cta-image {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 30px;
+    }
+    
+    .benefit-icons {
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 768px) {
+    .collection-steps, .plan-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .step, .plan-card {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .grass-image {
+        display: none;
+    }
+    
+    .quote-container {
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+}
+
+
+/* FORMULARIO */
+.register-section {
+    background-color: #f0f7f1;
+    padding: 60px 0;
+    font-family: Arial, sans-serif;
+}
+
+.register-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.register-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px 0 0 8px;
+    min-height: 500px;
+}
+
+.register-form {
+    background-color: white;
+    padding: 40px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.form-title {
+    color: #2a7f40;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #2a7f40;
+    box-shadow: 0 0 0 3px rgba(42, 127, 64, 0.2);
+    outline: none;
+}
+
+.register-btn {
+    background-color: #2a7f40;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 30px auto 0;
+}
+
+.register-btn a {
+    text-decoration: none;
+    color: white;
+}
+
+.register-btn:hover {
+    background-color: #1f6a34;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(42, 127, 64, 0.3);
+}
+
+@media (max-width: 768px) {
+    .register-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .register-image img {
+        border-radius: 8px 8px 0 0;
+        min-height: 300px;
+    }
+    
+    .register-form {
+        border-radius: 0 0 8px 8px;
+    }
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #555;
+}
+
+.radio-option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-checkmark {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    height: 18px;
+    width: 18px;
+    background-color: #fff;
+    border: 2px solid #2a7f40;
+    border-radius: 50%;
+}
+
+.radio-option:hover input ~ .radio-checkmark {
+    background-color: #f0f7f1;
+}
+
+.radio-option input:checked ~ .radio-checkmark {
+    background-color: #2a7f40;
+}
+
+.radio-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radio-option input:checked ~ .radio-checkmark:after {
+    display: block;
+}
+
+.radio-option .radio-checkmark:after {
+    top: 3px;
+    left: 3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+.form-select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: white;
+    color: #555;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a7f40' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.form-select:focus {
+    border-color: #2a7f40;
+    box-shadow: 0 0 0 3px rgba(42, 127, 64, 0.2);
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    .register-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+

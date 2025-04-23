@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Reciplanet</title>
+    <link rel="stylesheet" href="../styles/datos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+      <!-- Navigation -->
+<nav class="navbar">
+    <div class="container nav-container">
+        <a href="index.html" class="logo"><img src="../img/logo.png" alt="logo"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+        </ul>
+        <a href="login.html" class="btn btn-contact">Cerrar Sesión <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14M14 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+</nav>
+
+<div class="profile-section">
+    <div class="profile-container">
+        <!-- Columna izquierda: Foto de perfil -->
+        <div class="profile-image-col">
+            <div class="profile-image-container">
+                <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Foto de perfil" class="profile-image">
+                <button class="edit-photo-btn">Cambiar foto</button>
+            </div>
+        </div>
+        
+        <!-- Columna derecha: Datos editables -->
+        <div class="profile-data-col">
+            <h1 class="profile-title">Mi Perfil</h1>
+            
+            <form class="profile-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" value="Juan Pérez" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" value="juan@ejemplo.com" readonly>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" value="+57 123 456 7890" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="userType">Tipo de usuario</label>
+                        <select id="userType" disabled>
+                            <option value="ciudadano" selected>Ciudadano</option>
+                            <option value="empresa">Empresa Recolectora</option>
+                            <option value="admin">Administrador</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="address">Dirección</label>
+                    <input type="text" id="address" value="Calle 123 #45-67, Bogotá" readonly>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="edit-btn">Editar información</button>
+                    <button type="submit" class="save-btn" disabled>Guardar cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const editBtn = document.querySelector('.edit-btn');
+        const saveBtn = document.querySelector('.save-btn');
+        const inputs = document.querySelectorAll('input:not([type="button"]):not([type="submit"])');
+        const select = document.querySelector('select');
+        
+        editBtn.addEventListener('click', function() {
+            // Habilitar edición
+            inputs.forEach(input => {
+                input.readOnly = !input.readOnly;
+                input.style.backgroundColor = input.readOnly ? '#f5f5f5' : 'white';
+            });
+            
+            select.disabled = !select.disabled;
+            select.style.backgroundColor = select.disabled ? '#f5f5f5' : 'white';
+            
+            // Cambiar estado del botón
+            saveBtn.disabled = !saveBtn.disabled;
+            
+            // Cambiar texto del botón
+            if (editBtn.textContent === 'Editar información') {
+                editBtn.textContent = 'Cancelar';
+                editBtn.style.backgroundColor = '#ffecec';
+                editBtn.style.color = '#d32f2f';
+                editBtn.style.borderColor = '#d32f2f';
+            } else {
+                editBtn.textContent = 'Editar información';
+                editBtn.style.backgroundColor = '#f0f7f1';
+                editBtn.style.color = '#2a7f40';
+                editBtn.style.borderColor = '#2a7f40';
+            }
+        });
+        
+        // Manejar el envío del formulario
+        document.querySelector('.profile-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Cambios guardados correctamente');
+            // Aquí iría la lógica para guardar los cambios
+        });
+    });
+</script>
+
+    <!-- Footer -->
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#">Sobre</a>
+                    <a href="#">Nuestros Servicios</a>
+                    <a href="#">Proyectos</a>
+                    <a href="#">Contacto</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <p class="copyright">© Recipiente 2025, Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

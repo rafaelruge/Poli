@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Reciplanet</title>
+    <link rel="stylesheet" href="../styles/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+      <!-- Navigation -->
+<nav class="navbar">
+    <div class="container nav-container">
+        <a href="index.html" class="logo"><img src="../img/logo.png" alt="logo"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+        </ul>
+        <a href="index.html" class="btn btn-contact">Cerrar Sesión <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14M14 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+</nav>
+
+
+
+
+<!-- parte uno -->
+<div class="admin-panel-section">
+    <div class="admin-container">
+        <div class="admin-content-wrapper">
+            <div class="admin-header">
+                <h2 class="admin-title">Panel de Administración</h2>
+                <p class="admin-description">Accede rápidamente a las herramientas necesarias para gestionar recursos, datos y operaciones de manera eficiente.</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Empresa Cadamradora</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2000+</div>
+                    <div class="stat-label">Repertor Generales</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Usuario Activo</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- completar -->
+
+<div><h1>SOLICITUDES</h1></div>
+<div><h1>Estadísticas</h1></div>
+<div><h1>RUTAS</h1></div>
+
+
+
+
+<!-- Partners Section -->
+<section class="partners">
+    <div class="container">
+        <p><b>Confiado por líderes en sostenibilidad</b></p>
+        <div class="partner-logos">
+            <img src="../img/emp1.png" alt="Logo Acme" class="partner-logo">
+            <img src="../img/emp2.png" alt="Logo Green" class="partner-logo">
+            <img src="../img/emp3.jpg" alt="Logo EcoLife" class="partner-logo">
+            <img src="../img/emp4.jpg" alt="Logo Pristine" class="partner-logo">
+            <img src="../img/emp5.jpg" alt="Logo Recica" class="partner-logo">
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Process -->
+
+<div class="process-section">
+    <div class="process-header">
+        <span class="process-label">PROCESO</span>
+        <h2 class="process-title">Cómo Registrar Pesajes</h2>
+        <p class="process-description">Sigue estos simples pasos para registrar de manera precisa los datos del pesaje y optimizar el flujo de trabajo.</p>
+    </div>
+
+    <div class="steps-container">
+        <div class="process-step">
+            <div class="step-number">STEP 1</div>
+            <h3 class="step-title">Inica sesión</h3>
+            <p class="step-description">Accede a tu cuenta para comenzar con el registro de los datos.</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-number">STEP 2</div>
+            <h3 class="step-title">Selecciona la categoria</h3>
+            <p class="step-description">Elige el tipo de residuo que deseas registrar.</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-number">STEP 3</div>
+            <h3 class="step-title">Introduce datos</h3>
+            <p class="step-description">Ingresa el peso y otros detalles relevantes.</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-number">STEP 4</div>
+            <h3 class="step-title">Confirma registro</h3>
+            <p class="step-description">Verifica y guarda los cambios registrados.</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- parte dos -->
+<div class="stats-section">
+    <div class="stats-container">
+        <div class="stats-header">
+            <h1>Estadísticas Clave</h1>
+            <p class="stats-subtitle">Visualiza el impacto y el progreso de las operaciones de reciclaje y gestión de residuos.</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" data-target="500">0</div>
+                <div class="stat-info">
+                    <div class="stat-label">Usuarios Activos</div>
+                    <div class="stat-description">Colaborando en el reciclaje</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-number" data-target="2000">0</div>
+                <div class="stat-info">
+                    <div class="stat-label">Reportes Generados</div>
+                    <div class="stat-description">Datos precisos y confiables</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-number" data-target="50">0</div>
+                <div class="stat-info">
+                    <div class="stat-label">Empresas Asociadas</div>
+                    <div class="stat-description">Fomentando la sostenibilidad</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const statsSection = document.querySelector('.stats-section');
+        
+        function animateCount(element, target) {
+            const duration = 2000; // 2 segundos de animación
+            const start = 0;
+            const increment = target / (duration / 16); // 60fps
+            
+            let current = start;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    clearInterval(timer);
+                    current = target;
+                }
+                element.textContent = Math.floor(current) + '+';
+            }, 16);
+        }
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    statNumbers.forEach(stat => {
+                        const target = parseInt(stat.dataset.target);
+                        animateCount(stat, target);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        observer.observe(statsSection);
+    });
+</script>
+
+
+<!-- parte tres -->
+<div class="tools-section">
+    <div class="tools-container">
+        <div class="tools-header">
+            <h2 class="tools-title">Herramientas de Administración</h2>
+            <p class="tools-subtitle">Optimiza tu Gestión</p>
+            <p class="tools-description">Utiliza nuestro panel interactivo para centralizar la información y las operaciones de reciclaje.</p>
+        </div>
+        
+        <div class="tools-grid">
+            <div class="tool-card">
+                <h3 class="tool-title">Gestión de Datos</h3>
+                <p class="tool-text">Accede y organiza información clave de manera eficiente.</p>
+            </div>
+            
+            <div class="tool-card">
+                <h3 class="tool-title">Monitoreo en Tiempo Real</h3>
+                <p class="tool-text">Supervisa el progreso de las operaciones en tiempo real.</p>
+            </div>
+            
+            <div class="tool-card">
+                <h3 class="tool-title">Colaboración Simplificada</h3>
+                <p class="tool-text">Facilita la interacción entre usuarios y empresas asociadas.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- Footer -->
+
+
+ <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">Sobre</a>
+                <a href="#">Nuestros Servicios</a>
+                <a href="#">Proyectos</a>
+                <a href="#">Contacto</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <p class="copyright">© Recipiente 2025, Todos los derechos reservados.</p>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Reciplanet</title>
+    <link rel="stylesheet" href="../styles/registro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+      <!-- Navigation -->
+<nav class="navbar">
+    <div class="container nav-container">
+        <a href="index.html" class="logo"><img src="../img/logo.png" alt="logo"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- FORMULARIOS -->
+<div class="register-section">
+    <div class="register-container">
+        <!-- Columna izquierda: Imagen -->
+        <div class="register-image">
+            <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Imagen de registro">
+        </div>
+        
+        <!-- Columna derecha: Formulario -->
+        <div class="register-form">
+            <h2 class="form-title">Registro</h2>
+            
+            <form>
+                <div class="form-group">
+                    <label for="company">NIT de la empresa.</label>
+                    <input type="number" id="company" placeholder="NIT de la empresa">
+                </div>
+                
+                <div class="form-group">
+                    <label for="social">Razón Social</label>
+                    <input type="text" id="social" placeholder="Descripción razón social">
+                </div>
+                
+                <div class="form-group">
+                    <label for="document">Correo Electronico</label>
+                    <input type="email" id="document" placeholder="Correo Electronico">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contract">Contraseña</label>
+                    <input type="password" id="contract" placeholder="Contraseña">
+                </div>
+
+                <!-- Campo desplegable al final -->
+                <div class="form-group">
+                    <label for="userType">Tipo de usuario:</label>
+                    <select id="userType" class="form-select">
+                        <option value="ciudadano">Ciudadano</option>
+                        <option value="empresa">Empresa Recolectora</option>
+                        <option value="administrador">Administrador</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="register-btn"><a href="login.html">Registrarme →</a></button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+ <!-- Footer -->
+
+
+ <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">Sobre</a>
+                <a href="#">Nuestros Servicios</a>
+                <a href="#">Proyectos</a>
+                <a href="#">Contacto</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <p class="copyright">© Recipiente 2025, Todos los derechos reservados.</p>
+    </div>
+</footer>
+</body>
+</html>
